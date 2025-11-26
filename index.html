@@ -3,55 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Amigo Oculto</title>
+    <title>🎄 Amigo Oculto da Família 🎅</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 400px; margin: 0 auto; }
-        h1 { color: #d32f2f; }
-        img { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 5px solid #d32f2f; margin-top: 20px; }
-        .btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #2e7d32; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; }
-        #resultado { display: none; }
+        :root {
+            --red: #c0392b;
+            --green: #27ae60;
+            --dark-green: #145a32;
+            --gold: #f1c40f;
+            --white: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #a8d0e6; /* Azul gelo */
+            background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Efeito de neve caindo (CSS puro) */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial;
+            text-shadow: 0 0 1px #000;
+            animation: fall linear forwards;
+            z-index: -1;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh); }
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 90%;
+            width: 350px;
+            border-top: 10px solid var(--red);
+            border-bottom: 10px solid var(--green);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 10px;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        p {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        /* Estilo do Botão */
+        .btn-reveal {
+            background: linear-gradient(135deg, var(--green), var(--dark-green));
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            outline: none;
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        .btn-reveal:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.6);
+        }
+
+        .btn-reveal:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(39, 174, 96, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+        }
+
+        /* Área do Resultado */
+        #resultado {
+            display: none; /* Escondido inicialmente */
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .show-result {
+            display: block !important;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .friend-name {
+            font-size: 1.8rem;
+            color: var(--dark-green);
+            font-weight: bold;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .img-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .friend-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px dashed var(--red);
+            padding: 5px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .decoration {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h1>🎄 Amigo Oculto 🎅</h1>
-        <p>Você foi sorteado! Está pronto para ver quem você tirou?</p>
+        <div class="decoration">🎄</div>
+        <h1>Amigo Oculto</h1>
         
         <div id="capa">
-            <div class="btn" onclick="revelar()">Revelar Amigo</div>
+            <p>O Papai Noel já fez o sorteio!<br>Clique abaixo para descobrir quem você tirou.</p>
+            <button class="btn-reveal" onclick="revelar()">
+                🎁 REVELAR
+            </button>
         </div>
 
         <div id="resultado">
-            <h2>Você tirou:</h2>
-            <h3 id="nome-amigo">...</h3>
-            <img id="foto-amigo" src="" alt="Foto do Amigo">
+            <p>Você tirou:</p>
+            <div class="img-container">
+                <img id="foto-amigo" class="friend-photo" src="" alt="Foto do Amigo">
+            </div>
+            <div id="nome-amigo" class="friend-name">...</div>
+            <p style="font-size: 0.8rem; color: #888;">Shhh... Guarde segredo! 🤫</p>
         </div>
     </div>
 
     <script>
+        // Função para criar neve caindo
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 200);
+
         function revelar() {
-            // Pega o parametro 'k' da URL
             const params = new URLSearchParams(window.location.search);
             const encoded = params.get('k');
 
             if (encoded) {
                 try {
-                    // Decodifica Base64 (simples, mas suficiente para evitar spoiler visual)
                     const nome = atob(encoded);
                     
+                    // Esconde a capa e mostra o resultado
                     document.getElementById('capa').style.display = 'none';
-                    document.getElementById('resultado').style.display = 'block';
+                    const resultadoDiv = document.getElementById('resultado');
+                    resultadoDiv.classList.add('show-result');
                     
-                    // Mostra o nome e a foto
-                    document.getElementById('nome-amigo').innerText = nome.toUpperCase();
-                    // Assume que as fotos são .jpg e estão na pasta fotos/
-                    document.getElementById('foto-amigo').src = 'fotos/' + nome.toLowerCase() + '.jpg';
+                    document.getElementById('nome-amigo').innerText = nome;
+                    
+                    // Tratamento de erro caso a imagem não exista
+                    const img = document.getElementById('foto-amigo');
+                    img.src = 'fotos/' + nome.toLowerCase() + '.jpg';
+                    img.onerror = function() {
+                        this.src = 'https://via.placeholder.com/150?text=?'; // Imagem padrão se falhar
+                    }
+
                 } catch (e) {
-                    alert("Link inválido!");
+                    alert("Link inválido ou corrompido! Peça o link novamente.");
                 }
             } else {
-                alert("Link incompleto!");
+                alert("Ops! Esse link parece incompleto.");
             }
         }
     </script>
