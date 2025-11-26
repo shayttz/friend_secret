@@ -1,6 +1,6 @@
 # 🎄✨ Amigo Oculto da Família 🎅🎁
 
-![Christmas Banner](https://media.giphy.com/media/U8iiB9GbddUhhQLq1k/giphy.gif)
+![O Grinch no Natal](https://cornerstonecounselingpb.com/wp-content/uploads/2020/12/how-the-grinch-stole-christmas.jpg)
 
 > *"O Natal não é um momento nem uma estação, senão um estado de espírito. Valorizar a paz e a generosidade e ter graça é compreender o verdadeiro significado de Natal."*
 
