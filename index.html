@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Amigo Oculto</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 400px; margin: 0 auto; }
+        h1 { color: #d32f2f; }
+        img { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 5px solid #d32f2f; margin-top: 20px; }
+        .btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #2e7d32; color: white; text-decoration: none; border-radius: 5px; cursor: pointer; }
+        #resultado { display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎄 Amigo Oculto 🎅</h1>
+        <p>Você foi sorteado! Está pronto para ver quem você tirou?</p>
+        
+        <div id="capa">
+            <div class="btn" onclick="revelar()">Revelar Amigo</div>
+        </div>
+
+        <div id="resultado">
+            <h2>Você tirou:</h2>
+            <h3 id="nome-amigo">...</h3>
+            <img id="foto-amigo" src="" alt="Foto do Amigo">
+        </div>
+    </div>
+
+    <script>
+        function revelar() {
+            // Pega o parametro 'k' da URL
+            const params = new URLSearchParams(window.location.search);
+            const encoded = params.get('k');
+
+            if (encoded) {
+                try {
+                    // Decodifica Base64 (simples, mas suficiente para evitar spoiler visual)
+                    const nome = atob(encoded);
+                    
+                    document.getElementById('capa').style.display = 'none';
+                    document.getElementById('resultado').style.display = 'block';
+                    
+                    // Mostra o nome e a foto
+                    document.getElementById('nome-amigo').innerText = nome.toUpperCase();
+                    // Assume que as fotos são .jpg e estão na pasta fotos/
+                    document.getElementById('foto-amigo').src = 'fotos/' + nome.toLowerCase() + '.jpg';
+                } catch (e) {
+                    alert("Link inválido!");
+                }
+            } else {
+                alert("Link incompleto!");
+            }
+        }
+    </script>
+</body>
+</html>
