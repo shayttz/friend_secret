@@ -8,8 +8,23 @@ BASE_URL = f"https://shayttz.github.io/friend_secret/"
 
 # Lista de nomes (devem bater com o nome dos arquivos na pasta fotos/)
 participantes = [
-    "guilherme",
-    "laura"
+    "Guilherme",
+    "Laura",
+    "Thaís",
+    "Nicolas",
+    "Paulo",
+    "Rodrigo",
+    "Juliana",
+    "Maria Luiza",
+    "Daniel",
+    "Elizete",
+    "Luiz",
+    "Ana",
+    "Henrique",
+    "Nil",
+    "Ellen",
+    "Rute",
+    "Cesar",
 ]
 
 def realizar_sorteio():
