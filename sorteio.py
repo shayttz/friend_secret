@@ -4,7 +4,7 @@ import base64
 # CONFIGURAÇÃO: Coloque o seu usuário do GitHub aqui para montar o link certo
 GITHUB_USER = "shayttz"
 REPO_NAME = "friend_secret"
-BASE_URL = f"https://{GITHUB_USER}.github.io/{REPO_NAME}/"
+BASE_URL = f"https://shayttz.github.io/friend_secret/"
 
 # Lista de nomes (devem bater com o nome dos arquivos na pasta fotos/)
 participantes = [
