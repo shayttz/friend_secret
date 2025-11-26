@@ -10,7 +10,7 @@ BASE_URL = f"https://shayttz.github.io/friend_secret/"
 participantes = [
     "Guilherme",
     "Laura",
-    "Thaís",
+    "Thais",
     "Nicolas",
     "Paulo",
     "Rodrigo",
