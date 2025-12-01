@@ -17,26 +17,26 @@ BASE_URL = f"https://{GITHUB_USER}.github.io/{REPO_NAME}/"
 # - 'display': Deve ser como o nome aparecerá na tela.
 # - 'tamanho': O número do chinelo (ajuste o fictício).
 participantes = [
-    {"file": "guilherme", "display": "Guilherme", "tamanho": 42/43},
-    {"file": "laura", "display": "Laura", "tamanho": 39},
-    {"file": "thais", "display": "Thais", "tamanho": 37},
-    {"file": "nicolas", "display": "Nicolas", "tamanho": 41},
-    {"file": "paulo", "display": "Paulo", "tamanho": 41},
-    {"file": "rodrigo", "display": "Rodrigo", "tamanho": 41/42},
-    {"file": "juliana", "display": "Juliana", "tamanho": 36},
-    {"file": "marialuiza", "display": "Maria Luiza", "tamanho": 35}, # Display arrumado!
-    {"file": "daniel", "display": "Daniel", "tamanho": 41/42},
-    {"file": "elizete", "display": "Elizete", "tamanho": 36},
-    {"file": "luiz", "display": "Luiz", "tamanho": 41/42},
-    {"file": "ana", "display": "Ana", "tamanho": 39/40},
-    {"file": "henrique", "display": "Henrique", "tamanho": 41/42},
-    {"file": "nil", "display": "Nil", "tamanho": 41/42},
-    {"file": "ellen", "display": "Ellen", "tamanho": 35/36},
-    {"file": "rute", "display": "Rute", "tamanho": 35/36},
-    {"file": "cesar", "display": "Cesar", "tamanho": 41/42},
-    {"file": "mineiro", "display": "Mineiro", "tamanho": 40/41},
-    {"file": "bruna", "display": "Bruna", "tamanho": 37/38},
-    {"file": "alexsander", "display": "Alexsander", "tamanho": 45/46}
+    {"file": "guilherme", "display": "Guilherme", "tamanho": "42/43"},
+    {"file": "laura", "display": "Laura", "tamanho": "39"},
+    {"file": "thais", "display": "Thais", "tamanho": "37"},
+    {"file": "nicolas", "display": "Nicolas", "tamanho": "41"},
+    {"file": "paulo", "display": "Paulo", "tamanho": "41"},
+    {"file": "rodrigo", "display": "Rodrigo", "tamanho": "41/42"},
+    {"file": "juliana", "display": "Juliana", "tamanho": "36"},
+    {"file": "marialuiza", "display": "Maria Luiza", "tamanho": "35"}, # Display arrumado!
+    {"file": "daniel", "display": "Daniel", "tamanho": "41/42"},
+    {"file": "elizete", "display": "Elizete", "tamanho": "36"},
+    {"file": "luiz", "display": "Luiz", "tamanho": "41/42"},
+    {"file": "ana", "display": "Ana", "tamanho": "39/40"},
+    {"file": "henrique", "display": "Henrique", "tamanho": "41/42"},
+    {"file": "nil", "display": "Nil", "tamanho": "41/42"},
+    {"file": "ellen", "display": "Ellen", "tamanho": "35/36"},
+    {"file": "rute", "display": "Rute", "tamanho": "35/36"},
+    {"file": "cesar", "display": "Cesar", "tamanho": "41/42"},
+    {"file": "mineiro", "display": "Mineiro", "tamanho": "40/41}",
+    {"file": "bruna", "display": "Bruna", "tamanho": "37/38"},
+    {"file": "alexsander", "display": "Alexsander", "tamanho": "45/46"}
 ]
 
 # ==============================================================================
