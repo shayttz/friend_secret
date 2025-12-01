@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Amigo Oculto da Família 🎅</title>
+    <title>🎄 Amigo Chinelo 🩴</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     
@@ -12,13 +12,13 @@
             --red: #c0392b;
             --green: #27ae60;
             --dark-green: #145a32;
-            --gold: #f1c40f;
+            --blue-ice: #a8d0e6;
             --white: #ecf0f1;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #a8d0e6; /* Azul gelo */
+            background-color: var(--blue-ice);
             background-image: url('https://www.transparenttextures.com/patterns/snow.png');
             margin: 0;
             min-height: 100vh;
@@ -52,7 +52,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             text-align: center;
             max-width: 90%;
-            width: 350px;
+            width: 380px; /* Ajuste para caber o tamanho do chinelo */
             border-top: 10px solid var(--red);
             border-bottom: 10px solid var(--green);
             position: relative;
@@ -61,10 +61,9 @@
 
         h1 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--red);
-            margin-bottom: 10px;
-            margin-top: 0;
+            margin: 10px 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
@@ -78,12 +77,12 @@
         .btn-reveal {
             background: linear-gradient(135deg, var(--green), var(--dark-green));
             color: white;
-            padding: 15px 30px;
-            font-size: 1.1rem;
+            padding: 15px 35px;
+            font-size: 1.2rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
             transition: all 0.3s ease;
             font-weight: 600;
             outline: none;
@@ -110,12 +109,11 @@
         #resultado {
             display: none; /* Escondido inicialmente */
             opacity: 0;
-            transition: opacity 1s ease-in;
         }
 
         .show-result {
             display: block !important;
-            animation: fadeIn 1s forwards;
+            animation: fadeIn 0.8s forwards;
         }
 
         @keyframes fadeIn {
@@ -126,10 +124,24 @@
         .friend-name {
             font-size: 1.8rem;
             color: var(--dark-green);
-            font-weight: bold;
-            margin: 10px 0;
-            text-transform: uppercase;
+            font-weight: 700;
+            margin: 15px 0 5px 0;
             letter-spacing: 1px;
+            /* REMOVIDO: text-transform: uppercase; (O JavaScript agora envia o nome formatado) */
+        }
+
+        /* NOVO ESTILO PARA O TAMANHO */
+        .shoe-size {
+            font-size: 1.3rem;
+            color: var(--red);
+            font-weight: 600;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            border: 2px dashed var(--red);
         }
 
         .img-container {
@@ -153,30 +165,37 @@
         .decoration {
             font-size: 3rem;
             margin: 10px 0;
+            line-height: 1;
         }
-
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="decoration">🎄</div>
-        <h1>Amigo Oculto</h1>
+        <div class="decoration">🩴🎄🎅</div>
+        <h1>Amigo Chinelo</h1>
         
         <div id="capa">
-            <p>O Papai Noel já fez o sorteio!<br>Clique abaixo para descobrir quem você tirou.</p>
+            <p>O sorteio foi feito! Prepare o bolso e clique para descobrir quem (e que número) você tirou.</p>
             <button class="btn-reveal" onclick="revelar()">
-                🎁 REVELAR
+                🎁 REVELAR AGORA
             </button>
         </div>
 
         <div id="resultado">
-            <p>Você tirou:</p>
+            <p style="margin-bottom: 10px;">Você tirou:</p>
+            
             <div class="img-container">
-                <img id="foto-amigo" class="friend-photo" src="" alt="Foto do Amigo">
+                <img id="foto-amigo" class="friend-photo" src="https://via.placeholder.com/180?text=Aguarde..." alt="Foto do Amigo">
             </div>
+            
             <div id="nome-amigo" class="friend-name">...</div>
-            <p style="font-size: 0.8rem; color: #888;">Shhh... Guarde segredo! 🤫</p>
+
+            <div class="shoe-size">
+                👣 Tamanho: <span id="numero-chinelo">--</span>
+            </div>
+
+            <p style="font-size: 0.85rem; color: #888;">🤫 Guarde o segredo e o número!</p>
         </div>
     </div>
 
@@ -206,27 +225,44 @@
 
             if (encoded) {
                 try {
-                    const nome = atob(encoded);
+                    // 1. Decodifica o Base64. Exemplo: "marialuiza|Maria Luiza|36"
+                    const decodificado = atob(encoded);
                     
-                    // Esconde a capa e mostra o resultado
+                    // 2. Separa o texto em TRÊS PARTES
+                    const partes = decodificado.split('|');
+
+                    // Se não tiver exatamente 3 partes, o link está errado
+                    if (partes.length !== 3) {
+                        throw new Error("Formato do link inválido.");
+                    }
+
+                    const file_name = partes[0];      // Ex: marialuiza (usado na foto)
+                    const display_name = partes[1];   // Ex: Maria Luiza (usado na tela)
+                    const tamanho = partes[2];        // Ex: 36
+                    
+                    // --- Atualiza a tela ---
                     document.getElementById('capa').style.display = 'none';
-                    const resultadoDiv = document.getElementById('resultado');
-                    resultadoDiv.classList.add('show-result');
+                    document.getElementById('resultado').classList.add('show-result');
                     
-                    document.getElementById('nome-amigo').innerText = nome;
+                    // Preenche o nome (ARRUMADO!) e o tamanho
+                    document.getElementById('nome-amigo').innerText = display_name; 
+                    document.getElementById('numero-chinelo').innerText = tamanho;
                     
-                    // Tratamento de erro caso a imagem não exista
+                    // Tenta carregar a foto usando o nome_arquivo (file_name)
                     const img = document.getElementById('foto-amigo');
-                    img.src = 'fotos/' + nome.toLowerCase() + '.jpg';
+                    // Não precisa de toLowerCase() aqui, pois o Python já envia minúsculo (file_name)
+                    img.src = 'fotos/' + file_name + '.jpg'; 
                     img.onerror = function() {
-                        this.src = 'https://via.placeholder.com/150?text=?'; // Imagem padrão se falhar
+                        this.src = 'https://via.placeholder.com/150?text=Foto não encontrada'; 
+                        this.style.border = '5px solid #ccc';
                     }
 
                 } catch (e) {
-                    alert("Link inválido ou corrompido! Peça o link novamente.");
+                    console.error(e);
+                    alert("Link inválido ou corrompido! Peça o link novamente ao organizador.");
                 }
             } else {
-                alert("Você abriu o link do sorteio corretamente?");
+                alert("Você abriu o link do sorteio corretamente? O link está incompleto!");
             }
         }
     </script>
