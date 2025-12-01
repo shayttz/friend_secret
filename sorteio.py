@@ -34,7 +34,7 @@ participantes = [
     {"file": "ellen", "display": "Ellen", "tamanho": "35/36"},
     {"file": "rute", "display": "Rute", "tamanho": "35/36"},
     {"file": "cesar", "display": "Cesar", "tamanho": "41/42"},
-    {"file": "mineiro", "display": "Mineiro", "tamanho": "40/41}",
+    {"file": "mineiro", "display": "Mineiro", "tamanho": "40/41"},
     {"file": "bruna", "display": "Bruna", "tamanho": "37/38"},
     {"file": "alexsander", "display": "Alexsander", "tamanho": "45/46"}
 ]
