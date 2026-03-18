@@ -29,7 +29,7 @@
             position: relative;
         }
 
-        /* Efeito de neve caindo (CSS puro) */
+        
         .snowflake {
             position: absolute;
             top: -10px;
@@ -52,7 +52,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             text-align: center;
             max-width: 90%;
-            width: 380px; /* Ajuste para caber o tamanho do chinelo */
+            width: 380px; 
             border-top: 10px solid var(--red);
             border-bottom: 10px solid var(--green);
             position: relative;
@@ -73,7 +73,7 @@
             margin-bottom: 30px;
         }
 
-        /* Estilo do Botão */
+        
         .btn-reveal {
             background: linear-gradient(135deg, var(--green), var(--dark-green));
             color: white;
@@ -105,9 +105,9 @@
             100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
         }
 
-        /* Área do Resultado */
+        
         #resultado {
-            display: none; /* Escondido inicialmente */
+            display: none; 
             opacity: 0;
         }
 
@@ -127,10 +127,10 @@
             font-weight: 700;
             margin: 15px 0 5px 0;
             letter-spacing: 1px;
-            /* REMOVIDO: text-transform: uppercase; (O JavaScript agora envia o nome formatado) */
+            
         }
 
-        /* NOVO ESTILO PARA O TAMANHO */
+        
         .shoe-size {
             font-size: 1.3rem;
             color: var(--red);
@@ -200,7 +200,7 @@
     </div>
 
     <script>
-        // Função para criar neve caindo
+       
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -240,17 +240,17 @@
                     const display_name = partes[1];   // Ex: Maria Luiza (usado na tela)
                     const tamanho = partes[2];        // Ex: 36
                     
-                    // --- Atualiza a tela ---
+                    
                     document.getElementById('capa').style.display = 'none';
                     document.getElementById('resultado').classList.add('show-result');
                     
-                    // Preenche o nome (ARRUMADO!) e o tamanho
+                   
                     document.getElementById('nome-amigo').innerText = display_name; 
                     document.getElementById('numero-chinelo').innerText = tamanho;
                     
-                    // Tenta carregar a foto usando o nome_arquivo (file_name)
+                   
                     const img = document.getElementById('foto-amigo');
-                    // Não precisa de toLowerCase() aqui, pois o Python já envia minúsculo (file_name)
+                    
                     img.src = 'fotos/' + file_name + '.jpg'; 
                     img.onerror = function() {
                         this.src = 'https://via.placeholder.com/150?text=Foto não encontrada'; 
