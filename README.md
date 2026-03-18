@@ -49,7 +49,7 @@ participantes = [
 ]
 ```
 
-🌐 Passo 3: Ativar o Site (GitHub Pages)
+🌐 Passo 3: Ativar o Site 
 Para o link funcionar, o site precisa estar no ar:
 
 Vá na aba Settings (Configurações) do repositório.
